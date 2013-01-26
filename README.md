@@ -108,3 +108,5 @@ as this code does, should work just fine.
 - Allow windows to be created using multiple constructor recipes to
   cover different states of the application
 - Constructor recipes should provide something like setup/teardown
+- Maybe add blacklist? Array of window names (keys in
+  Application.Views...) that should be ignored
