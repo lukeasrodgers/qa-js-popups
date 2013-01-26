@@ -47,7 +47,17 @@ If it succeeds, you can have a look at the window, verify everything is
 okay, then close it, at which point (assuming the listeners are set up
 correctly), the process will continue.
 
-## Constructor recipes
+## How to use it
+
+1. Make whatever modifications are necessary
+2. (Optional) if you need to use constructor recipes, write them, paste
+   into js dev console
+3. (Optional) if you want to ignore some windows, add them to the
+   blacklist.
+4. Paste the script into js console
+5. QA to your heart's content
+
+### Advanced usage: Constructor recipes
 
 For a majority of your cases, this simplified approach will probably
 just work. 
@@ -86,6 +96,16 @@ var constructor_recipes = {
 };
 ```
 
+### Advanced usage: ignoring some windows
+
+There may be some windows in your app you want to ignore. Just add the
+name of the view as it appears in the global namespace to a global
+variable `blacklist` before running the script: 
+
+```
+var blacklist = ['IgnoreThisWindow', 'AndThisOne'];
+```
+
 ## What you'll probably need to tweak in these scripts
 
 - namespacing 
@@ -100,18 +120,8 @@ If using Backbone you will likely have to make some more substantial
 changes. If using Backbone Marionette, listening to the `close` event,
 as this code does, should work just fine. 
 
-## How to use it
-
-1. Make whatever modifications are necessary
-2. (Optional) if you need to use constructor recipes, write them, paste
-   into js dev console
-3. Paste the script into js console
-4. QA to your heart's content
-
 ## TODO
 
 - Allow windows to be created using multiple constructor recipes to
   cover different states of the application
 - Constructor recipes should provide something like setup/teardown
-- Maybe add blacklist? Array of window names (keys in
-  Application.Views...) that should be ignored
