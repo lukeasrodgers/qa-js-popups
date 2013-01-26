@@ -3,6 +3,7 @@ jQuery.each(Application.Views, function(class_name, Constructor) {
   if (Application.Views.Window.prototype.isPrototypeOf(Constructor.prototype)) {
     queue.queue('windows', function(next) {
       try {
+        console.log('Trying ', class_name);
         var opts = (typeof constructor_recipes !== 'undefined') ? constructor_recipes[class_name] || {} : {};
         if (typeof opts === 'function') {
           opts = opts();
