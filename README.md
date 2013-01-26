@@ -17,6 +17,11 @@ Provided are two small scripts for use with Backbone and ExtJs web apps.
 You will likely have to modify them to work with your particular
 codebase.
 
+## Dependencies
+
+- modern browser
+- currently uses jQuery
+
 ## How it works
 
 These scripts make a few assumptions: 
