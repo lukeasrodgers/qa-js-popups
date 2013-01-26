@@ -3,7 +3,9 @@
 QAing complex web apps can be tedious and error-prone. You have to
 remember all the UI nooks and crannies, even the ones that are rarely
 seen by users and often only seen under special, difficult to remember
-and recreate circumstances.
+and recreate circumstances. JavaScript tests with Qunit or Jasmine help,
+but it is somewhere between hard and impossible to write tests that
+verify "look and feel."
 
 One particularly annoying instance of this general problem is presented
 by javascript popup windows. Fortunately, if we can make a couple
@@ -85,6 +87,13 @@ var constructor_recipes = {
 - base window class
 - method to show/render the window
 - listeners fired when the windows is closed/destroyed
+
+If using ExtJs, the only thing you should have to change is your
+application namespacing pattern.
+
+If using Backbone you will likely have to make some more substantial
+changes. If using Backbone Marionette, listening to the `close` event,
+as this code does, should work just fine. 
 
 ## How to use it
 
