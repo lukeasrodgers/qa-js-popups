@@ -49,7 +49,7 @@ correctly), the process will continue.
 
 ## How to use it
 
-1. Make whatever modifications are necessary
+1. Make any necessary modifications to the script ([see below](https://github.com/lukeasrodgers/qa-js-popups#what-youll-probably-need-to-tweak-in-these-scripts))
 2. (Optional) if you need to use constructor recipes, write them, paste
    into js dev console
 3. (Optional) if you want to ignore some windows, add them to the
