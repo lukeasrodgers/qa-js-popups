@@ -28,10 +28,10 @@ e.g. `Application.Views.BaseWindow`, etc.
 5. they have standard API for opening/showing them, and standard
   listeners for when they are closed/destroyed/hidden.
 
-They iterate through all view constructors accessible from
-`Application.Views`, use `isPrototypeOf` to check whether they inherit
-from whatever base window class you're using, and if they do, they
-attempt to instantiate the window and show/render it. 
+The scripts iterate through all view constructors accessible from
+`Application.Views`, use `isPrototypeOf` to check whether the view in
+question inherits from whatever base window class you're using, and if
+it does, we attempt to instantiate the window and show/render it. 
 
 If this fails, an error message will be displayed, and we proceed to the
 next window.
@@ -48,19 +48,23 @@ just work.
 However:
 
 - if any of your windows require parameters be passed to their
-  constructor
-- if any of your windows require certain global state that is not the
-  case
+  constructor function
+- if any of your windows require certain global state that cannot
+  already be assumed to be the case
 
 the scripts can take advantage of what I've called "constructor recipes"
 that can both specify parameters to be passed to the constructor, and
 also establish whatever global state is necessary. 
 
 Constructor recipes can either just be an object with whatever
-parameters you need passed to the constructor, or they can be function
+parameters you need passed to the constructor, or they can be functions
 that can establish state and/or return the required params object.
 
-Example:
+The key for each recipe should correspond to the name of the window as
+it occurs in your global namesapce.
+
+So, assuming Application.Views.AccountWindow, and
+Application.Views.SpecialAdminWindow: 
 
 ```
 var constructor_recipes = {
@@ -75,7 +79,7 @@ var constructor_recipes = {
 };
 ```
 
-## What you'll probably need to tweak to work with your codebase
+## What you'll probably need to tweak in these scripts
 
 - namespacing 
 - base window class
@@ -88,8 +92,10 @@ var constructor_recipes = {
 2. (Optional) if you need to use constructor recipes, write them, paste
    into js dev console
 3. Paste the script into js console
+4. QA to your heart's content
 
 ## TODO
 
-Allow windows to be created using multiple constructor recipes to cover
-different states.
+- Allow windows to be created using multiple constructor recipes to
+  cover different states of the application
+- Constructor recipes should provide something like setup/teardown
