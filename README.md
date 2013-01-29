@@ -91,7 +91,6 @@ var constructor_recipes = {
   SpecialAdminWindow: function() {
     window.global_params.user_type = 'admin';
     return {some_other_param: true};
-    return {};
   }
 };
 ```
